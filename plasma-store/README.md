@@ -130,4 +130,4 @@ Unlike in C++ implementation, there is no need to manually release retrieved or 
 License
 -------
 
-This project is [MIT licensed](./LICENSE).
+This project is [MIT licensed](../LICENSE).
