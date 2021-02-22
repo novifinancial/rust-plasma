@@ -5,7 +5,7 @@ authors = ["François Garillot <fga@fb.com>", "Irakliy Khaburzaniya <irakliyk@fb
 description = "Rust bindings for Arrow Plasma object store"
 keywords = [ "arrow", "plasma" ]
 categories = [ "no-std",  "api-bindings" ]
-repository = "https://github.com/facebookresearch/rust-plasma"
+repository = "https://github.com/novifinancial/rust-plasma"
 license = "MIT"
 edition = "2018"
 
