@@ -29,9 +29,9 @@ namespace plasma {
 
   std::unique_ptr<ObjectBuffer> new_obj_buffer();
 
-  rust::Slice<const unsigned char> get_buffer_data(std::shared_ptr<Buffer> buffer);
+  rust::Slice<const unsigned char> get_buffer_data(const std::shared_ptr<Buffer>& buffer);
   
-  rust::Slice<unsigned char> get_buffer_data_mut(std::shared_ptr<Buffer> buffer);
+  rust::Slice<unsigned char> get_buffer_data_mut(const std::shared_ptr<Buffer>& buffer);
 
   //////////////////
   // PlasmaClient //

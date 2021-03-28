@@ -119,25 +119,25 @@ impl<'a> ObjectBuffer<'a> {
 
     /// Returns read-only data buffer of this object buffer.
     pub fn data(&self) -> &[u8] {
-        unsafe { plasma::get_buffer_data(self.buf.data.clone()) }
+        plasma::get_buffer_data(&self.buf.data)
     }
 
     /// Returns mutable data buffer of this object buffer.
     pub fn data_mut(&mut self) -> &mut [u8] {
         assert!(self.is_mutable, "object buffer is not mutable");
-        unsafe { plasma::get_buffer_data_mut(self.buf.data.clone()) }
+        unsafe { plasma::get_buffer_data_mut(&self.buf.data) }
     }
 
     /// Returns metadata buffer of this object buffer.
     pub fn meta(&self) -> &[u8] {
-        unsafe { plasma::get_buffer_data(self.buf.metadata.clone()) }
+        plasma::get_buffer_data(&self.buf.metadata)
     }
 
     /// Returns the size of this object buffer in bytes; this includes size of data and
     /// metadata.
     pub fn size(&self) -> usize {
-        let meta_size = unsafe { plasma::get_buffer_data(self.buf.metadata.clone()) }.len();
-        let data_size = unsafe { plasma::get_buffer_data(self.buf.data.clone()) }.len();
+        let meta_size = plasma::get_buffer_data(&self.buf.metadata).len();
+        let data_size = plasma::get_buffer_data(&self.buf.data).len();
         meta_size + data_size
     }
 
