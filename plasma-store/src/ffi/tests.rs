@@ -91,7 +91,7 @@ fn plasma_ffi_create() {
         let meta = vec![1, 3, 5, 7];
         let res2 = ffi::create(pc, ob.pin_mut(), &oid, 8, &meta);
 
-        let data_mut = ffi::get_buffer_data_mut(ob.data.clone());
+        let data_mut = unsafe { ffi::get_buffer_data_mut(ob.data.clone()) };
         for i in 0..8 {
             data_mut[i] = i as u8;
         }

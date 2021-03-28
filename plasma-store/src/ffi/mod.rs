@@ -59,8 +59,15 @@ pub mod ffi {
         #[namespace = "arrow"]
         type Buffer;
 
-        fn get_buffer_data<'a>(buffer: SharedPtr<Buffer>) -> &'a [u8];
-        fn get_buffer_data_mut<'a>(buffer: SharedPtr<Buffer>) -> &'a mut [u8];
+        // Safety:
+        //   - caller must not retain slice past the destruction of the buffer
+        unsafe fn get_buffer_data<'a>(buffer: SharedPtr<Buffer>) -> &'a [u8];
+
+        // Safety:
+        //   - buffer must be a mutable CPU buffer
+        //   - caller must not retain slice past the destruction of the buffer
+        //   - caller must not obtain overlapping slices of the same buffer
+        unsafe fn get_buffer_data_mut<'a>(buffer: SharedPtr<Buffer>) -> &'a mut [u8];
 
         #[namespace = "arrow"]
         type MutableBuffer;
