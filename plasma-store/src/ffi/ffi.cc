@@ -41,13 +41,13 @@ namespace plasma {
     return std::make_unique<ObjectBuffer>(ObjectBuffer{data_ptr, metadata_ptr, 0});
   }
 
-  rust::Slice<const unsigned char> get_buffer_data(std::shared_ptr<Buffer> buffer) {
+  rust::Slice<const unsigned char> get_buffer_data(const std::shared_ptr<Buffer>& buffer) {
     const uint8_t *c = buffer->data();
     int64_t len = buffer->size();
     return rust::Slice<const unsigned char>(c, len);
   }
 
-  rust::Slice<unsigned char> get_buffer_data_mut(std::shared_ptr<Buffer> buffer) {
+  rust::Slice<unsigned char> get_buffer_data_mut(const std::shared_ptr<Buffer>& buffer) {
     uint8_t *c = buffer->mutable_data();
     int64_t len = buffer->size();
     return rust::Slice<unsigned char>(c, len);
