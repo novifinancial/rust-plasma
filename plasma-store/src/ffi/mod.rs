@@ -8,7 +8,7 @@ mod tests;
 
 #[allow(clippy::all)]
 #[cxx::bridge(namespace = plasma)]
-pub mod ffi {
+pub(crate) mod ffi {
 
     /// Object buffer data structure.
     struct ObjectBuffer {
